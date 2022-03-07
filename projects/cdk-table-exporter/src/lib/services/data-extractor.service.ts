@@ -44,11 +44,13 @@ export class DataExtractorService {
   }
 
   private shouldHide(hiddenColumns: Array<any>, columnIndex: number) {
-    if (hiddenColumns && hiddenColumns.includes(columnIndex)) {
-      return true;
-    } else {
-      return false;
-    }
+    let result = false;
+    hiddenColumns.forEach(item=>{
+      if (item==columnIndex) {
+        result = true;
+      }
+    })
+    return result;
   }
 
   private createExcelItem(row: Array<string>): any {
